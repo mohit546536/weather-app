@@ -20,3 +20,7 @@ async function getWeather() {
         result.innerHTML = "❌ City not found";
     }
 }
+function clearInput() {
+    document.getElementById("city").value = "";
+    document.getElementById("result").innerHTML = "<p>Enter a city to get weather</p>";
+}
