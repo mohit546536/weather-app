@@ -2,29 +2,20 @@ async function getWeather() {
     let city = document.getElementById("city").value.trim();
     let result = document.getElementById("result");
 
-   
     if (city === "") {
         result.innerHTML = "⚠️ Please enter a city name";
         return;
     }
 
-    let apiKey = "cdbdea2ca54f24d5be80cd362130c9e7";  
+    let apiKey = "cdbdea2ca54f24d5be80cd362130c9e7";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
+    result.innerHTML = "⏳ Loading...";
+
     try {
-       
-        result.innerHTML = "⏳ Loading...";
-
         let response = await fetch(url);
+        let data = await response.json();  // 👈 direct parse
 
-     
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-
-        let data = await response.json();
-
-     
         if (data.cod == 200) {
             result.innerHTML = `
                 <h2>${data.name}</h2>
@@ -33,18 +24,11 @@ async function getWeather() {
                 <p>💧 Humidity: ${data.main.humidity}%</p>
             `;
         } else {
-            result.innerHTML = "❌ City not found";
+            result.innerHTML = "❌ City not found or API issue";
         }
 
     } catch (error) {
-    
-        result.innerHTML = "⚠️ Error fetching data. Check internet or API!";
+        result.innerHTML = "⚠️ Error fetching data!";
         console.error(error);
     }
-}
-
-
-function clearInput() {
-    document.getElementById("city").value = "";
-    document.getElementById("result").innerHTML = "<p>Enter a city to get weather</p>";
 }
