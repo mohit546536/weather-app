@@ -9,17 +9,15 @@
 
 <div class="container">
     <h1>🌤 Weather App</h1>
+<div class="search-box">
+    <input type="text" id="city" placeholder="Enter city name">
 
-    <div class="search-box">
-        <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getWeather()">Search</button>
+    <button onclick="clearInput()">Clear</button>
+</div>
 
-        <button onclick="getWeather()">Search</button>
-        <button onclick="clearInput()">Clear</button>
-    </div>
-
-    <div id="result" class="card">
-        <p>Enter a city to get weather</p>
-    </div>
+<div id="result">
+    <p>Enter a city to get weather</p>
 </div>
 
 <script src="script.js"></script>
