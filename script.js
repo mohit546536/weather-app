@@ -21,6 +21,9 @@ async function getWeather() {
     }
 }
 function clearInput() {
-    document.getElementById("city").value = "";
-    document.getElementById("result").innerHTML = "<p>Enter a city to get weather</p>";
+    let input = document.getElementById("city");
+    let result = document.getElementById("result");
+
+    input.value = "";
+    result.innerHTML = "<p>Enter a city to get weather</p>";
 }
